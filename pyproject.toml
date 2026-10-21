@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thai-dialect-asr"
+version = "0.1.0"
+description = "Thai dialect ASR (w2v-BERT 2.0 CTC + char n-gram LM) and the eval_v2 same-protocol Thai ASR benchmark"
+readme = "README.md"
+license = { text = "Apache-2.0 (code); model weights CC BY-NC-SA 4.0" }
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.4",
+  "transformers>=4.46,<5",
+  "safetensors>=0.4",
+  "huggingface_hub>=0.23",
+  "numpy>=1.24",
+  "soundfile>=0.12",
+  "soxr>=0.3",
+  "pyarrow>=14",
+  "pythainlp>=5.0",
+]
+
+[project.optional-dependencies]
+eval = ["librosa>=0.10", "gdown>=5"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["bignose_thai_asr*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

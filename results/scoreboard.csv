@@ -1,0 +1,12 @@
+test_set,n_utts,our_system,our_cer,best_clean_competitor,competitor_cer,delta,ci95_low,ci95_high,relative,verdict,claimable,note
+slscu_pattani,834,w2vbert-ctc + pattani char6 LM (released),12.706,typhoon-asr-qwen-1.7b-ctx,65.054,-52.348,-53.931,-50.967,-0.805,decisive,yes,SLSCU released dev split used as test
+slscu_pattani,834,w2vbert-ctc greedy (released),14.573,typhoon-asr-qwen-1.7b-ctx,65.054,,,,-0.776,decisive,yes,bootstrap not re-run for this row
+slscu_khummuang,805,w2vbert-big + char LM (LM not released),6.204,Pathumma-whisper-th-large-v3,7.774,-1.570,-2.987,-0.458,-0.202,decisive,yes,LM text includes research-only Bible text so the LM is not redistributed
+slscu_khummuang,805,w2vbert-big greedy (released),6.786,Pathumma-whisper-th-large-v3,7.774,-0.988,-2.400,0.106,-0.127,not significant,yes,
+tvspeech,570,t60 (task-arithmetic merge),5.338,typhoon-whisper-large-v3,5.747,-0.409,-0.795,-0.115,-0.071,significant win,yes,
+slscu_korat,1080,korat-expert-004 + char LM rescoring,13.447,Pathumma-stt-th-fastconformer-rnnt-large,13.379,0.068,-0.893,1.089,0.005,tie,yes,
+cv,11042,cv17-091,2.181,Pathumma-stt-th-fastconformer-rnnt-large,2.026,0.154,0.065,0.242,0.076,significant loss,yes,
+gs2_typhoon,1000,cv17-091,4.748,typhoon-whisper-large-v3,4.517,0.231,0.066,0.410,0.051,significant loss,yes,
+isan_typhoon,500,dialect2v2-interp (routed),6.141,Pathumma-stt-th-fastconformer-rnnt-large,8.020,-1.878,-2.541,-1.276,-0.234,decisive,pending,interpolation weight chosen with a TVSpeech-test rule; must be re-selected on dev
+fleurs (style-invariant),1021,dialect2v2-interp,5.30,Pathumma-whisper-th-large-v3,5.66,-0.36,-0.67,-0.03,-0.064,significant win,pending,same disclosure as above
+fleurs (raw),1021,dialect2v2-interp,8.034,Pathumma-whisper-th-large-v3,6.040,1.994,1.544,2.474,0.330,significant loss,yes,gap is mostly digit vs spelled-number style

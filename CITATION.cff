@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "หากใช้โค้ดหรือโมเดลนี้ โปรดอ้างอิงตามนี้"
+title: "Thai Dialect ASR: Same-Protocol Benchmarking of Central and Regional Thai Speech Recognition"
+authors:
+  - name: "BoomBigNose"
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/Boom-Vitt/thai-dialect-asr"
+date-released: "2026-10-22"
+version: "0.1.0"
