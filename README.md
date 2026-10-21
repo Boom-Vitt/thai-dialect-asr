@@ -41,11 +41,9 @@ CER (%) บนชุดทดสอบ ยิ่งต่ำยิ่งดี �
 - TVSpeech และ GigaSpeech2: typhoon-whisper-large-v3
 - โคราช และ Common Voice: Pathumma-stt-rnnt
 
-ช่วงความเชื่อมั่น CI95 ของทุกแถวอยู่ใน [`results/scoreboard.csv`](results/scoreboard.csv)
-
 ✅ = น้ำหนักโมเดลเปิดให้ดาวน์โหลดบน Hugging Face
 
-ตารางเต็มรวมแถวที่ยังรอตรวจสอบอยู่ใน [`results/scoreboard.csv`](results/scoreboard.csv)
+ตารางเต็ม พร้อมช่วง CI95 และแถวที่ยังรอตรวจสอบ อยู่ใน [`results/scoreboard.csv`](results/scoreboard.csv)
 
 **ผลที่ยังรอตรวจสอบ:** อีสานผ่าน router (6.14 เทียบ 8.02) และ FLEURS แบบ style-invariant (5.30 เทียบ 5.66) ใช้โมเดล dialect2v2-interp ซึ่งตอนเลือกน้ำหนักผสมใช้ผลจากชุดทดสอบ TVSpeech ประกอบการตัดสินใจ จึงต้องเลือกใหม่บน dev ก่อน ระหว่างนี้เรา **ไม่นับ** สองแถวนี้เป็นผลชนะ
 
