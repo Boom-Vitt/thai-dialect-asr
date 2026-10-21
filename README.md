@@ -6,6 +6,7 @@
 
 [![Code: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Weights: CC BY-NC-SA 4.0](https://img.shields.io/badge/weights-CC%20BY--NC--SA%204.0-lightgrey.svg)](#สัญญาอนุญาต)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-models-yellow.svg)](https://huggingface.co/BoomBigNose)
 
 </div>
 
@@ -42,12 +43,10 @@ CER (%) บนชุดทดสอบ ยิ่งต่ำยิ่งดี �
 
 ## โมเดลที่เปิดให้ใช้
 
-> กำลังอัปโหลดขึ้น Hugging Face ลิงก์จะเพิ่มเข้ามาในส่วนนี้เมื่อพร้อม
-
 | โมเดล | ภาษา | ฐาน | CER บนชุดทดสอบ |
 |---|---|---|---|
-| `w2v-bert-thai-pattani-ctc` | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
-| `w2v-bert-thai-khummuang-ctc` | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
+| [`BoomBigNose/w2v-bert-thai-pattani-ctc`](https://huggingface.co/BoomBigNose/w2v-bert-thai-pattani-ctc) | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
+| [`BoomBigNose/w2v-bert-thai-khummuang-ctc`](https://huggingface.co/BoomBigNose/w2v-bert-thai-khummuang-ctc) | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
 
 LM ของคำเมืองที่ทำให้ได้ 6.20 **ไม่ได้แจกจ่าย** เพราะข้อความที่ใช้สร้างมีส่วนที่ใช้ได้เพื่อการวิจัยเท่านั้น สร้าง LM เองได้ด้วย `KNTokenLM` ใน `src/bignose_thai_asr/ngram.py`
 
@@ -63,10 +62,10 @@ pip install -e .
 
 ```bash
 # greedy
-python scripts/transcribe.py --model HF_USER/w2v-bert-thai-khummuang-ctc audio.wav
+python scripts/transcribe.py --model BoomBigNose/w2v-bert-thai-khummuang-ctc audio.wav
 
 # CTC prefix beam + character 6-gram LM (ค่าที่เลือกบน dev)
-python scripts/transcribe.py --model HF_USER/w2v-bert-thai-pattani-ctc \
+python scripts/transcribe.py --model BoomBigNose/w2v-bert-thai-pattani-ctc \
   --lm lm/pattani.char6.json.gz --lm-w 0.3 --bonus 1.0 --beam 8 audio.wav
 ```
 
