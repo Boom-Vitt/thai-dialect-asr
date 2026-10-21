@@ -49,9 +49,9 @@ def main():
     for path in a.audio:
         logps = []
         for chunk in split_long(read_wav(path)):
-            f = fe(chunk, sampling_rate=SR, return_tensors="pt")
+            f = fe(chunk, sampling_rate=SR, return_tensors="pt", return_attention_mask=True)
             with torch.no_grad():
-                lg = model(f.input_features.to(a.device)).logits[0]
+                lg = model(f.input_features.to(a.device), attention_mask=f.attention_mask.to(a.device)).logits[0]
             logps.append(lg.float().log_softmax(-1).cpu().numpy())
         if lm is None:
             text = " ".join(x for x in (ids_to_text(greedy_ids(lp), id2tok) for lp in logps) if x)
