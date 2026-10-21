@@ -25,15 +25,23 @@
 
 CER (%) บนชุดทดสอบ ยิ่งต่ำยิ่งดี ทุกระบบวัดใหม่ด้วย protocol `f1f03f053b40`
 
-| ชุดทดสอบ | ระบบของเรา | CER | คู่แข่งที่ดีที่สุด | CER | ต่าง [CI95] | ผล |
-|---|---|---:|---|---:|---|---|
-| มลายูปัตตานี (SLSCU) | w2v-BERT CTC + LM ✅ | **12.71** | typhoon-asr-qwen-1.7b-ctx | 65.05 | −52.35 [−53.93, −50.97] | ชนะขาด (−80%) |
-| คำเมือง (SLSCU) | w2v-BERT CTC + LM | **6.20** | Pathumma-whisper-large-v3 | 7.77 | −1.57 [−2.99, −0.46] | ชนะขาด (−20%) |
-| คำเมือง (SLSCU) | w2v-BERT CTC greedy ✅ | 6.79 | Pathumma-whisper-large-v3 | 7.77 | −0.99 [−2.40, +0.11] | ดีกว่าแต่ไม่มีนัยสำคัญ |
-| TVSpeech | t60 (model merge) | **5.34** | typhoon-whisper-large-v3 | 5.75 | −0.41 [−0.80, −0.12] | ชนะ (−7%) |
-| โคราช (SLSCU) | Whisper expert + LM rescoring | 13.45 | Pathumma-stt-rnnt | 13.38 | +0.07 [−0.89, +1.09] | เสมอ |
-| Common Voice 17 | cv17-091 | 2.18 | Pathumma-stt-rnnt | 2.03 | +0.15 [+0.07, +0.24] | แพ้ |
-| GigaSpeech2-Typhoon | cv17-091 | 4.75 | typhoon-whisper-large-v3 | 4.52 | +0.23 [+0.07, +0.41] | แพ้ |
+| ชุดทดสอบ | ของเรา | คู่แข่งที่ดีที่สุด | ผล |
+|---|---:|---:|---|
+| มลายูปัตตานี | **12.71** ✅ | 65.05 | 🏆 ชนะขาด −80% |
+| คำเมือง (+LM) | **6.20** | 7.77 | 🏆 ชนะขาด −20% |
+| คำเมือง (greedy) | 6.79 ✅ | 7.77 | ดีกว่า −13% (ไม่มีนัยสำคัญ) |
+| TVSpeech | **5.34** | 5.75 | ชนะ −7% |
+| โคราช | 13.45 | 13.38 | เสมอ |
+| Common Voice 17 | 2.18 | 2.03 | แพ้ +8% |
+| GigaSpeech2 | 4.75 | 4.52 | แพ้ +5% |
+
+คู่แข่งที่ดีที่สุดในแต่ละชุด:
+- มลายูปัตตานี: typhoon-asr-qwen-1.7b-ctx
+- คำเมือง: Pathumma-whisper-large-v3
+- TVSpeech และ GigaSpeech2: typhoon-whisper-large-v3
+- โคราช และ Common Voice: Pathumma-stt-rnnt
+
+ช่วงความเชื่อมั่น CI95 ของทุกแถวอยู่ใน [`results/scoreboard.csv`](results/scoreboard.csv)
 
 ✅ = น้ำหนักโมเดลเปิดให้ดาวน์โหลดบน Hugging Face
 
