@@ -6,7 +6,6 @@
 
 [![Code: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Weights: CC BY-NC-SA 4.0](https://img.shields.io/badge/weights-CC%20BY--NC--SA%204.0-lightgrey.svg)](#สัญญาอนุญาต)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-models-yellow.svg)](https://huggingface.co/HF_USER)
 
 </div>
 
@@ -43,10 +42,12 @@ CER (%) บนชุดทดสอบ ยิ่งต่ำยิ่งดี �
 
 ## โมเดลที่เปิดให้ใช้
 
+> กำลังอัปโหลดขึ้น Hugging Face ลิงก์จะเพิ่มเข้ามาในส่วนนี้เมื่อพร้อม
+
 | โมเดล | ภาษา | ฐาน | CER บนชุดทดสอบ |
 |---|---|---|---|
-| [`HF_USER/w2v-bert-thai-pattani-ctc`](https://huggingface.co/HF_USER/w2v-bert-thai-pattani-ctc) | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
-| [`HF_USER/w2v-bert-thai-khummuang-ctc`](https://huggingface.co/HF_USER/w2v-bert-thai-khummuang-ctc) | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
+| `w2v-bert-thai-pattani-ctc` | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
+| `w2v-bert-thai-khummuang-ctc` | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
 
 LM ของคำเมืองที่ทำให้ได้ 6.20 **ไม่ได้แจกจ่าย** เพราะข้อความที่ใช้สร้างมีส่วนที่ใช้ได้เพื่อการวิจัยเท่านั้น สร้าง LM เองได้ด้วย `KNTokenLM` ใน `src/bignose_thai_asr/ngram.py`
 
