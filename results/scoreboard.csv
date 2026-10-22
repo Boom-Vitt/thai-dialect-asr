@@ -7,6 +7,6 @@ tvspeech,570,t60 (task-arithmetic merge),5.338,typhoon-whisper-large-v3,5.747,-0
 slscu_korat,1080,korat-expert-004 + char LM rescoring,13.447,Pathumma-stt-th-fastconformer-rnnt-large,13.379,0.068,-0.893,1.089,0.005,tie,yes,
 cv,11042,cv17-091,2.181,Pathumma-stt-th-fastconformer-rnnt-large,2.026,0.154,0.065,0.242,0.076,significant loss,yes,
 gs2_typhoon,1000,cv17-091,4.748,typhoon-whisper-large-v3,4.517,0.231,0.066,0.410,0.051,significant loss,yes,
-isan_typhoon,500,dialect2v2-interp (routed),6.141,Pathumma-stt-th-fastconformer-rnnt-large,8.020,-1.878,-2.541,-1.276,-0.234,decisive,pending,interpolation weight chosen with a TVSpeech-test rule; must be re-selected on dev
+isan_typhoon,500,dialect2v2-interp (routed),6.141,Pathumma-stt-th-fastconformer-rnnt-large,8.020,-1.878,-2.541,-1.276,-0.234,decisive,pending,interpolation weight chosen with a TVSpeech-test rule; must be re-selected on dev; all 114 test speakers are also in the Isan train split (speaker-held-out CER 8.50)
 fleurs (style-invariant),1021,dialect2v2-interp,5.30,Pathumma-whisper-th-large-v3,5.66,-0.36,-0.67,-0.03,-0.064,significant win,pending,same disclosure as above
 fleurs (raw),1021,dialect2v2-interp,8.034,Pathumma-whisper-th-large-v3,6.040,1.994,1.544,2.474,0.330,significant loss,yes,gap is mostly digit vs spelled-number style

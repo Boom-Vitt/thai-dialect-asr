@@ -116,7 +116,7 @@ Our reading is that the competitors' Central-Thai lead comes from training data:
 ## 7. Data hygiene and disclosures
 
 - **Deduplication:** all training text was deduplicated against every test and dev reference, both exact and near (Jaccard ≥ 0.8). The SLSCU tests show no exact, near, PCM or id overlap with training data. Speaker overlap cannot be checked.
-- **Pending claims:** dialect2v2-interp (used for Isan routed 6.14 and FLEURS style-invariant 5.30) had its interpolation weight chosen with a rule on TVSpeech test CER. Those two results are marked *pending* until the weight is re-selected on dev only.
+- **Pending claims:** dialect2v2-interp (used for Isan routed 6.14 and FLEURS style-invariant 5.30) had its interpolation weight chosen with a rule on TVSpeech test CER. Those two results are marked *pending* until the weight is re-selected on dev only. In addition, all 114 Isan test speakers appear in the Isan training split used by dialect2v2; on speaker-held-out Isan utterances the model scores 8.50.
 - **Kham Mueang LM not released:** the LM text includes research-only Bible text, so the LM is not redistributed. The released Kham Mueang model reports greedy CER (6.79).
 
 ## 8. Conclusion

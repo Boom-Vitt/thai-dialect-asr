@@ -1,12 +1,14 @@
 <div align="center">
 
+![BoomBigNose Lab](assets/banner.png)
+
 # Thai Dialect ASR
 
-**โมเดลรู้จำเสียงภาษาไทยถิ่น และชุดวัดผลมาตรฐานเดียวสำหรับ ASR ภาษาไทย**
+**โมเดลรู้จำเสียงภาษาไทยถิ่น และชุดวัดผลมาตรฐานเดียวสำหรับ ASR ภาษาไทย** · โดย BoomBigNose Lab
 
 [![Code: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Weights: CC BY-NC-SA 4.0](https://img.shields.io/badge/weights-CC%20BY--NC--SA%204.0-lightgrey.svg)](#สัญญาอนุญาต)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-models-yellow.svg)](https://huggingface.co/BoomBigNose)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-BoomBigNoseLab-yellow.svg)](https://huggingface.co/BoomBigNoseLab)
 
 </div>
 
@@ -45,14 +47,14 @@ CER (%) บนชุดทดสอบ ยิ่งต่ำยิ่งดี �
 
 ตารางเต็ม พร้อมช่วง CI95 และแถวที่ยังรอตรวจสอบ อยู่ใน [`results/scoreboard.csv`](results/scoreboard.csv)
 
-**ผลที่ยังรอตรวจสอบ:** อีสานผ่าน router (6.14 เทียบ 8.02) และ FLEURS แบบ style-invariant (5.30 เทียบ 5.66) ใช้โมเดล dialect2v2-interp ซึ่งตอนเลือกน้ำหนักผสมใช้ผลจากชุดทดสอบ TVSpeech ประกอบการตัดสินใจ จึงต้องเลือกใหม่บน dev ก่อน ระหว่างนี้เรา **ไม่นับ** สองแถวนี้เป็นผลชนะ
+**ผลที่ยังรอตรวจสอบ:** อีสานผ่าน router (6.14 เทียบ 8.02) และ FLEURS แบบ style-invariant (5.30 เทียบ 5.66) ใช้โมเดล dialect2v2-interp ซึ่งตอนเลือกน้ำหนักผสมใช้ผลจากชุดทดสอบ TVSpeech ประกอบการตัดสินใจ จึงต้องเลือกใหม่บน dev ก่อน นอกจากนี้ผู้พูดทั้ง 114 คนในชุดทดสอบอีสานยังอยู่ในชุดเทรนอีสานที่ใช้ด้วย (เฉพาะผู้พูดที่ไม่เคยเห็นได้ 8.50) ระหว่างนี้เรา **ไม่นับ** สองแถวนี้เป็นผลชนะ
 
 ## โมเดลที่เปิดให้ใช้
 
 | โมเดล | ภาษา | ฐาน | CER บนชุดทดสอบ |
 |---|---|---|---|
-| [`BoomBigNose/w2v-bert-thai-pattani-ctc`](https://huggingface.co/BoomBigNose/w2v-bert-thai-pattani-ctc) | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
-| [`BoomBigNose/w2v-bert-thai-khummuang-ctc`](https://huggingface.co/BoomBigNose/w2v-bert-thai-khummuang-ctc) | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
+| [`BoomBigNoseLab/w2v-bert-thai-pattani-ctc`](https://huggingface.co/BoomBigNoseLab/w2v-bert-thai-pattani-ctc) | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
+| [`BoomBigNoseLab/w2v-bert-thai-khummuang-ctc`](https://huggingface.co/BoomBigNoseLab/w2v-bert-thai-khummuang-ctc) | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
 
 LM ของคำเมืองที่ทำให้ได้ 6.20 **ไม่ได้แจกจ่าย** เพราะข้อความที่ใช้สร้างมีส่วนที่ใช้ได้เพื่อการวิจัยเท่านั้น สร้าง LM เองได้ด้วย `KNTokenLM` ใน `src/bignose_thai_asr/ngram.py`
 
@@ -68,11 +70,18 @@ pip install -e .
 
 ```bash
 # greedy
-python scripts/transcribe.py --model BoomBigNose/w2v-bert-thai-khummuang-ctc audio.wav
+python scripts/transcribe.py --model BoomBigNoseLab/w2v-bert-thai-khummuang-ctc audio.wav
 
 # CTC prefix beam + character 6-gram LM (ค่าที่เลือกบน dev)
-python scripts/transcribe.py --model BoomBigNose/w2v-bert-thai-pattani-ctc \
+python scripts/transcribe.py --model BoomBigNoseLab/w2v-bert-thai-pattani-ctc \
   --lm lm/pattani.char6.json.gz --lm-w 0.3 --bonus 1.0 --beam 8 audio.wav
+```
+
+เดโมบนเครื่อง (หน้าเว็บ อัดเสียงหรืออัปโหลดไฟล์ แล้วเลือกโมเดล):
+
+```bash
+pip install "gradio==5.50.0"
+python demo/app.py   # เปิด http://127.0.0.1:7860
 ```
 
 ## วัดผลด้วย eval_v2
@@ -119,7 +128,7 @@ python scripts/style_invariant.py --ref-system pathumma pathumma=a.jsonl mine=b.
 ```bibtex
 @misc{thai_dialect_asr_2026,
   title        = {Thai Dialect ASR: Same-Protocol Benchmarking of Central and Regional Thai Speech Recognition},
-  author       = {BoomBigNose},
+  author       = {{BoomBigNose Lab}},
   year         = {2026},
   howpublished = {\url{https://github.com/Boom-Vitt/thai-dialect-asr}}
 }
