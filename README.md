@@ -83,6 +83,19 @@ python scripts/transcribe.py --model BoomBigNoseLab/w2v-bert-thai-pattani-ctc \
   --lm lm/pattani.char6.json.gz --lm-w 0.3 --bonus 1.0 --beam 8 audio.wav
 ```
 
+Whisper ใช้ภาษาไทยและงาน transcribe พร้อม chunker 30 วินาทีเดียวกับ eval_v2:
+
+```bash
+# greedy ของโมเดลรวม (ค่าเริ่มต้น)
+python scripts/transcribe_whisper.py --model BoomBigNoseLab/whisper-large-v3-thai-merge audio.wav
+# ระบบโคราชเต็ม: beam-8 + greedy, char LM และ frozen CTC judge (test CER 13.447)
+python scripts/transcribe_whisper.py --model BoomBigNoseLab/whisper-large-v3-thai-korat --loopguard loopguard-flags.txt --rescore rescore.json --lm lm/korat.char6.json.gz audio.wav
+```
+
+ไฟล์ flags, rescore และ LM อ่านจากเครื่องก่อน แล้วดาวน์โหลดจาก repo โมเดลได้; ใช้เฉพาะ `--loopguard loopguard-flags.txt` สำหรับ +lg
+ค่าใน rescore.json คือ `{"lm_w": 0.3, "bonus": 0.0, "ctc_w": 1.0}`; หากไม่ระบุ --loopguard ในโหมด rescore จะใช้ loopguard-flags.txt จาก repo โมเดล
+เสียงเกิน 30 วินาทีหรือผู้สมัครทุกตัวถูก guard จะใช้ผล +lg; seed สุ่มอิงชื่อไฟล์ไม่รวมนามสกุลแทน ID ใน manifest ของ campaign
+
 เดโมบนเครื่อง (หน้าเว็บ อัดเสียงหรืออัปโหลดไฟล์ แล้วเลือกโมเดล):
 
 ```bash
