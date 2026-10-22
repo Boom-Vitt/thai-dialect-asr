@@ -55,6 +55,12 @@ CER (%) บนชุดทดสอบ ยิ่งต่ำยิ่งดี �
 |---|---|---|---|
 | [`BoomBigNoseLab/w2v-bert-thai-pattani-ctc`](https://huggingface.co/BoomBigNoseLab/w2v-bert-thai-pattani-ctc) | มลายูปัตตานี (อักษรไทย) | facebook/w2v-bert-2.0 | 14.57 greedy / 12.71 + LM (มี LM ใน repo) |
 | [`BoomBigNoseLab/w2v-bert-thai-khummuang-ctc`](https://huggingface.co/BoomBigNoseLab/w2v-bert-thai-khummuang-ctc) | คำเมือง (ไทยถิ่นเหนือ) | facebook/w2v-bert-2.0 | 6.79 greedy |
+| [`BoomBigNoseLab/whisper-large-v3-thai-merge`](https://huggingface.co/BoomBigNoseLab/whisper-large-v3-thai-merge) | ไทยกลาง | task-arithmetic merge ของ Typhoon/Pathumma/Thonburian | TVSpeech 5.34 |
+| [`BoomBigNoseLab/whisper-large-v3-thai-cv`](https://huggingface.co/BoomBigNoseLab/whisper-large-v3-thai-cv) | ไทยกลาง อ่านออกเสียง | เทรนต่อจาก merge ด้วย CV17 | CV 2.18 / GS2 4.75 |
+| [`BoomBigNoseLab/whisper-large-v3-thai-korat`](https://huggingface.co/BoomBigNoseLab/whisper-large-v3-thai-korat) | โคราช | typhoon-whisper-large-v3 | 15.95 greedy / 13.45 ระบบเต็ม (มี LM ใน repo) |
+| [`BoomBigNoseLab/whisper-large-v3-thai-dialects-interp`](https://huggingface.co/BoomBigNoseLab/whisper-large-v3-thai-dialects-interp) | ไทยกลาง + ถิ่น (รุ่นวิจัย) | merge + dialect fine-tune | อีสาน 6.14 (รอตรวจสอบ) |
+
+โมเดลไทยกลาง (merge, cv) ใช้ Apache-2.0 ส่วนโมเดลที่เทรนด้วยข้อมูล SLSCU ใช้ CC BY-NC-SA 4.0
 
 LM ของคำเมืองที่ทำให้ได้ 6.20 **ไม่ได้แจกจ่าย** เพราะข้อความที่ใช้สร้างมีส่วนที่ใช้ได้เพื่อการวิจัยเท่านั้น สร้าง LM เองได้ด้วย `KNTokenLM` ใน `src/bignose_thai_asr/ngram.py`
 
